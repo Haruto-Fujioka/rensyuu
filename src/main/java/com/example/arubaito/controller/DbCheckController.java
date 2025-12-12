@@ -25,4 +25,11 @@ public class DbCheckController {
             return "DB 接続失敗… エラー: " + e.getMessage();
         }
     }
+
+    @GetMapping("/check-db")
+    @ResponseBody
+    public String Db() {
+        return jdbcTemplate.queryForObject("SELECT current_database()", String.class);
+    }
+
 }
